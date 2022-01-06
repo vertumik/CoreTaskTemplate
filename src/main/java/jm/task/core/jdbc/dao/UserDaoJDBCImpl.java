@@ -17,10 +17,10 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void createUsersTable() {
 
-        String sql = "CREATE TABLE users (id BIGINT NOT NULL AUTO_INCREMENT, name VARCHAR(45), lastName VARCHAR(45), age SMALLINT NOT NULL, PRIMARY KEY (id))";
+        String str = "CREATE TABLE users (id BIGINT NOT NULL AUTO_INCREMENT, name VARCHAR(45), lastName VARCHAR(45), age SMALLINT NOT NULL, PRIMARY KEY (id))";
 
-        try(PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.executeUpdate(sql);
+        try(PreparedStatement preparedStatement = connection.prepareStatement(str)) {
+            preparedStatement.executeUpdate(str);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -29,9 +29,9 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void dropUsersTable() {
 
-        try(Statement statement = connection.createStatement()){
+        try(Statement statement = connection.createStatement()) {
             statement.execute("DROP TABLE users");
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -100,6 +100,5 @@ public class UserDaoJDBCImpl implements UserDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 }
