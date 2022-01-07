@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 public class Util {
 
+    private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost:3306/db_Users";
     private static final String USER = "root";
     private static final String PASS = "barri11088";
@@ -15,9 +16,14 @@ public class Util {
         Connection conn = null;
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName(JDBC_DRIVER);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
             conn = DriverManager.getConnection(URL, USER, PASS);
-        } catch(SQLException | ClassNotFoundException e) {
+        } catch(SQLException e) {
             e.printStackTrace();
         }
         return conn;
