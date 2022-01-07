@@ -9,8 +9,6 @@ import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
 
-//    private final Connection connection = Util.getConnection();
-
     public UserDaoJDBCImpl() {
 
     }
@@ -44,15 +42,8 @@ public class UserDaoJDBCImpl implements UserDao {
             preparedStatement.setString(2, lastName);
             preparedStatement.setByte(3, age);
             preparedStatement.executeUpdate();
-//            connection.setAutoCommit(false);
-//            connection.commit();
         } catch (SQLException e) {
             e.printStackTrace();
-//            try(Connection connection = Util.getConnection()) {
-//                connection.rollback();
-//            } catch (SQLException exception) {
-//                exception.printStackTrace();
-//            }
         }
 
     }
@@ -80,15 +71,9 @@ public class UserDaoJDBCImpl implements UserDao {
                 user.setLastName(resultSet.getString("lastName"));
                 user.setAge(resultSet.getByte("age"));
                 userList.add(user);
-//                connection.commit();
             }
         } catch (SQLException e) {
             e.printStackTrace();
-//            try(Connection connection = Util.getConnection()) {
-//                connection.rollback();
-//            } catch (SQLException exception) {
-//                exception.printStackTrace();
-//            }
         }
         return userList;
     }
