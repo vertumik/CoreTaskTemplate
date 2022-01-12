@@ -58,7 +58,7 @@ public class Util {
                 configuration.addAnnotatedClass(User.class);
                 StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties());
-                sessionFactory = configuration.buildSessionFactory(builder.build());
+                sessionFactory = configuration.buildSessionFactory();
             }catch (Exception e) {
                 e.printStackTrace();
             }
